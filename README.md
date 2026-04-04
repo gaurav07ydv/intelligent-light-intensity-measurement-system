@@ -51,6 +51,30 @@ The proposed system collects raw light intensity data from an LDR and temperatur
 - scikit-learn
 - xgboost
 
+## Setup Instructions
+### Hardware Setup
+1. Connect the LDR, DHT22, TSL2561, BH1750, and OLED display to the ESP32.
+2. Connect the IRLZ44N MOSFET to the ESP32 output pin for LED strip control.
+3. Connect the 12V LED strip through the MOSFET.
+4. Ensure that the ESP32 ground and external power supply ground are common.
+
+### Software Requirements
+- Arduino IDE
+- Python 3.x
+- Required Python libraries: pandas, numpy, matplotlib, scikit-learn, xgboost
+- Required Arduino libraries for ESP32, OLED, DHT22, BH1750, and TSL2561
+
+### Running the Project
+1. Upload `firmware/esp32_code.ino` to the ESP32 using Arduino IDE.
+2. Use the sensor setup to collect light and temperature readings.
+3. Run `ml_model/train_model.py` in Python to train or review the calibration model.
+4. Refer to `data/lux_data.csv` for the dataset used in training.
+5. View graphs and presentation files in the `docs/` folder.
+
+### Output
+- OLED displays live sensor readings and calibrated lux
+- LED turns ON/OFF based on calibrated lux threshold
+
 ## System Workflow
 1. LDR senses raw light intensity
 2. DHT22 measures temperature
@@ -132,6 +156,12 @@ The result graphs are available in the `docs/` folder:
 - Model performance details are available in `ml_model/model_results.md`
 - Dataset is available in `data/lux_data.csv`
 - Final project presentation is available in `docs/expo_presentation.pptx`
+
+## Point of Contact
+**Gaurav Yadav**  
+Team LuxSense  
+SRM Institute of Science and Technology, Tiruchirappalli  
+For project-related queries, please contact through this GitHub repository.
 
 ## Conclusion
 This project demonstrates that a low-cost LDR sensor can be made more reliable through machine learning-based calibration. By using TSL2561 as a reference sensor and BH1750 as a secondary comparison sensor, the system improves light measurement accuracy and applies it to automatic lighting control. The final prototype proves that low-cost sensing combined with machine learning can be used for practical indoor smart lighting applications.
